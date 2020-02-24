@@ -42,7 +42,9 @@ public class AccountPrefix extends AbstractExecutor<AccountPrefixRequest, Accoun
             if (!encoder.canEncode(json.getText())) {
                 return new AccountPrefixResponse(Response.UTF_8);
             }
-            //TODO проверка на админа (строки) я в регулярках не тю тю
+            if (Stream.of("admin", "moderator", "owner").anyMatch(s -> s.equalsIgnoreCase(text))) {
+                return new AccountPrefixResponse(Response.FORBIDDEN_WORD);
+            }
             if (speed <= 0 || speed >= 1000) {
                 return new AccountPrefixResponse(Response.WRONG_SPEED);
             }
@@ -64,5 +66,9 @@ public class AccountPrefix extends AbstractExecutor<AccountPrefixRequest, Accoun
                 "INSERT INTO prefix_animation (color, player_id) values (:color,:id)", sources
         );
         return new AccountPrefixResponse(Response.OK);
+    }
+
+    private boolean checkAdmin(String str) {
+        return true;
     }
 }
