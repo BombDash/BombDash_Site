@@ -1,0 +1,520 @@
+.table-prof{
+    display: block;
+    margin-left: 1rem;
+    margin-bottom: auto !important;
+}
+.main-text p {
+    margin-bottom: 0;
+}
+
+.card {
+    border-radius: 10px;
+    border: unset;
+    overflow: hidden;
+    box-shadow: 2px 2px 10px -3px rgba(0, 0, 0, .8);
+}
+
+@media all and (min-width: 1024px) {
+    .card-hover:hover {
+        transform: scale(1.1);
+    }
+
+    .card-hover {
+        transition: all 0.8s;
+    }
+
+    .large-font {
+        font-size: 3.5rem;
+        font-weight: 300;
+        line-height: 1.2;
+    }
+}
+
+@media all and (max-width: 576px) {
+    .large-font {
+        font-size: 1.5rem;
+        font-weight: 300;
+        line-height: 1.2;
+    }
+}
+
+.layout-panel-heading h3 {
+    margin: 4px 0 14px;
+    color: #bfbfbf;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.1
+}
+
+table tr:first-child td {
+    border-top: none
+}
+
+.table-prof tbody {
+    display: table;
+    width: 100%;
+}
+
+.alert {
+    width: 100%;
+    margin-bottom: 0;
+    margin-top: 1rem
+}
+
+.close:active {
+    outline: 0
+}
+
+@media (max-width: 576px) {
+    .section2, .table-i-div {
+        align-items: center;
+        flex-direction: column
+    }
+
+    .section2 {
+        margin-top: 0;
+        justify-content: center
+    }
+
+    .textTransfer {
+        margin: auto;
+        width: 90%;
+        text-align: center
+    }
+
+    .profileName {
+        margin-left: 0;
+        margin-bottom: 1rem
+    }
+
+    .profile-button {
+        width: 100%;
+        margin-right: 0;
+        float: unset
+    }
+}
+
+.nav-item:hover {
+    background-color: rgba(0, 0, 0, .2) !important
+}
+
+.leftSwitch .switches li {
+    width: 90%;
+    list-style: none;
+    margin: 0.5rem 1rem;
+    display: flex;
+}
+
+.leftSwitch .switches a:hover {
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, .3)
+}
+
+.leftSwitch .switches a {
+    text-align: center;
+    width: 100%;
+    color: white;
+    text-decoration: none;
+}
+
+.leftSwitch-active {
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, .3)
+}
+
+.buy_form {
+    justify-content: center
+}
+
+@media (max-width: 576px) {
+    .section {
+        flex-direction: column
+    }
+
+    .form-group, .out {
+        width: 100%
+    }
+
+    .leftSwitch {
+        margin-right: unset
+    }
+
+    .rightSection {
+        flex-grow: 1
+    }
+
+    .leftSwitch .switches {
+        flex-direction: row
+    }
+}
+
+.infotable {
+    height: 4em
+}
+
+.content {
+    padding-top: 1rem;
+    padding-bottom: 1rem
+}
+
+.pagination {
+    user-select: none;
+    -webkit-user-select: none;
+    /* user-select -- это нестандартное свойство */
+
+    -moz-user-select: none;
+    /* поэтому нужны префиксы */
+
+    -ms-user-select: none;
+}
+
+.table {
+    border-radius: 15px;
+    margin-bottom: 0
+}
+
+.icon, .small-icon {
+    padding: 0 !important
+}
+
+.icon {
+    width: 50px;
+    vertical-align: middle !important
+}
+
+.small-icon {
+    vertical-align: top !important
+}
+
+.icon-size {
+    width: 5%
+}
+
+@media (max-width: 576px) {
+    .hide, .top-info {
+        display: none
+    }
+}
+
+.profile {
+    border-radius: 15px;
+    padding: 10px;
+    overflow: hidden
+}
+
+.player-image, .table-div {
+    display: block;
+    float: left
+}
+
+.table-nick {
+    width: 35rem;
+}
+
+.nickname {
+    vertical-align: middle;
+    text-align: left
+}
+
+.nickname a:link {
+    color: #fff
+}
+
+.nickname a:visited {
+    color: #a9a9a9
+}
+
+.nickname a:active, .nickname a:hover {
+    color: #dadada
+}
+
+.bgSection {
+    height: auto;
+    border-radius: 15px;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    margin-bottom: 1rem
+}
+
+.profileName {
+    font-size: 1.5rem;
+    margin-left: 1rem
+}
+
+.profile-button {
+    margin-right: 1rem;
+    float: right
+}
+
+.section2 {
+    display: flex;
+    margin-top: 1rem;
+    justify-content: space-between
+}
+
+.profileIcon {
+    width: 256px;
+    height: 256px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .8);
+    border-radius: 50px
+}
+
+.table-i {
+    margin: 0 1rem;
+    table-layout: fixed
+}
+
+.table-i-div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem
+}
+
+.round-table {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.textTransfer {
+    justify-content: space-between;
+    display: flex
+}
+
+.search {
+    display: -webkit-box
+}
+
+@media (max-width: 576px) {
+    .section2, .table-i-div {
+        align-items: center;
+        flex-direction: column
+    }
+
+    .section2 {
+        justify-content: center
+    }
+
+
+    .profileIcon {
+        margin: 0 0 1rem
+    }
+
+    .textTransfer {
+        margin: auto;
+        width: 80%;
+        text-align: center
+    }
+
+    .profileName {
+        margin-left: 0;
+        margin-bottom: 1rem
+    }
+
+    .profile-button {
+        margin-right: 0;
+        float: unset
+    }
+}
+
+.mydiv {
+    margin: 0 1rem
+}
+
+.section {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row
+}
+
+.leftSwitch {
+    margin-right: 1rem
+}
+
+.leftSwitch .switches, .navSectionPopUp ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.leftSwitch .switches {
+    flex-wrap: wrap
+}
+
+.leftSwitch .switches a {
+    padding: 20px
+}
+
+.rightSection {
+    flex-grow: 10
+}
+
+@media screen and (max-width: 576px) {
+    .section {
+        flex-direction: column
+    }
+
+    .leftSwitch {
+        margin-right: unset
+    }
+
+    .rightSection {
+        flex-grow: 1
+    }
+
+    .leftSwitch .switches {
+        flex-direction: row
+    }
+}
+
+.displayNone {
+    display: none
+}
+
+.popUp {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: flex-end;
+    align-items: flex-end
+}
+
+.myicon {
+    margin-right: 1rem;
+}
+
+.div_a span {
+    text-decoration: none !important;
+    color: white !important;
+}
+
+.div_a {
+    text-decoration: none !important;
+}
+
+.navSectionPopUp {
+    white-space: nowrap;
+    top: 100%;
+    cursor: default;
+    z-index: 1;
+    opacity: 0;
+    position: absolute;
+    transition: all .3s;
+    right: 1rem;
+    margin-top: 2rem
+}
+
+.navSectionPopUp ul {
+    margin-top: 1rem;
+    list-style: none;
+    background-color: #313030
+}
+
+.navSectionPopUp li {
+    text-align: left;
+    padding: 10px
+}
+
+.navSectionPopUp a {
+    font-size: 18px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, .9);
+    width: 100%;
+    text-align: center
+}
+
+.navSectionPopUp a:after {
+    content: '';
+    width: 99%;
+    left: 1%;
+    margin: -1px;
+    height: 1px;
+    position: absolute;
+    background-color: rgba(255, 255, 255, .3)
+}
+
+.navSectionPopUp a:last-child:after {
+    display: none
+}
+
+.navSectionPopUp a:first-child {
+    border-radius: 15px 15px 0 0
+}
+
+.navSectionPopUp a:last-child {
+    border-radius: 0 0 15px 15px
+}
+
+.navSectionPopUp a:hover {
+    background-color: #8e8c8c
+}
+
+.int-table-val {
+    width: 20%;
+}
+
+.navSectionPopUp_active {
+    opacity: 1;
+    margin: 0
+}
+
+.ul-popUp {
+    justify-content: flex-end;
+    align-items: flex
+}
+
+@media screen and (max-width: 576px) {
+    .textTransfer {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center
+    }
+
+    .profile-button {
+        width: 100%
+    }
+
+    .navSectionPopUp, .popUp {
+        align-items: center;
+        width: 100%
+    }
+
+    .navSectionPopUp {
+        justify-content: center;
+        left: 0
+    }
+
+    .popUp {
+        flex-direction: center;
+    }
+
+    .navSectionPopUp ul {
+        justify-content: center;
+        align-items: center;
+        margin: 0
+    }
+
+    .navSectionPopUp a:after {
+        width: 100%;
+        left: 1px
+    }
+
+    .textTransfer {
+        width: 90%
+    }
+}
+@media (max-width: 576px) {
+    .hide, .top-info {
+        display: none
+    }
+
+    .nav-pills > .nav-item {
+        margin-right: 0 !important;
+        width: 100%;
+    }
+    .table-prof{
+        margin-left: 0;
+    }
+}

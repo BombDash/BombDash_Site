@@ -1,0 +1,96 @@
+title: 'BombDash SITE'
+page_not_found: 'Упс страница не найдена'
+error_handle: 'Произошёл тролл... всмысле ошибка'
+index_welcome: 'Добро пожаловать на главную страницу'
+index_find: 'Здесь вы найдёте:'
+index:
+  - title: Модпак
+    url: /modpack
+    image: /image/modpack.jpg
+  - title: 'Глобальный топ'
+    url: /top
+    image: /image/top.png
+  - title: 'Месячный топ'
+    url: /month
+    image: /image/month.png
+  - title: 'Личный кабинет'
+    url: /lk
+    image: /image/lk.png
+score: "Счёт"
+top_all: "Топ игроков по очкам"
+nick: "Ник игрока"
+global_top: "Глобальный топ"
+month_top: "Месячный топ"
+banlist: "Банлист"
+search: "Поиск"
+reason: "Причина"
+operator: "Оператор"
+player_profile: "Профиль игрока {name}"
+player_not_found: "Игрок не найден"
+#Один день
+plurar_day1: "день"
+#Два дня
+plurar_day2: "дня"
+#Пять дней
+plurar_day5: "дней"
+
+plurar_hour1: "час"
+plurar_hour2: "часа"
+plurar_hour5: "часов"
+
+plurar_minute1: "минута"
+plurar_minute2: "минуты"
+plurar_minute5: "минут"
+
+plurar_second1: "секунда"
+plurar_second2: "секунды"
+plurar_second5: "секунд"
+
+ban_end: "Бан заканчивается"
+ban_forever: "никогда"
+back: "назад"
+score_all: "Статистика за всё время"
+score_month: "Статистика за месяц"
+status: "Статус"
+online: "онлайн"
+was_online: "был на сервере "
+last_server: "Последний раз был замечен на"
+privilege: "Привилегия"
+prv_player: "игрок"
+first_play: "Дата первого захода"
+auth_fail: "Неправильный логин или пароль"
+account_create_ok: "Для завершения регистрации, проверьте почтовый ящик"
+account_create_not_verify: "На этот адрес почты уже был выслан код для регистрации, попробуйте проверить папку спам"
+account_create_email_used: "На этот адрес уже зарегестрирован активированный аккаунт"
+online_users: "Игроки на сервере"
+name_kills: "Убийства"
+name_games_win_teams: "Выйгранно командных игр"
+name_games_win: "Выйграно игр"
+name_flags: "Доставлено флагов"
+name_suicides: "Суицидов"
+name_ffa_points: "Очки в режиме FFA"
+name_teams_points: "Очки в режиме TEAM"
+name_games: "Сыграно игр"
+name_fatality: "Сделано фаталити"
+name_games_win_ffa: "Выйгранно FFA серий"
+name_betrayals: "Предательств"
+name_deaths: "Смертей"
+empty_servers: "Сервера пустые"
+top_betrayalls: "Топ игроков по количеству предательств"
+top_deaths: "Топ игроков по количеству смертей"
+top_fatality: "Топ игроков по количеству фаталити"
+top_ffa_points: "Топ игроков по очкам в режиме FFA"
+top_flags: "Топ игроков по количеству доставленных флагов"
+top_games: "Топ игроков по количеству игр"
+top_games_win: "Топ игроков по количеству побед"
+top_games_win_ffa: "Топ игроков по количеству побед в режиме FFA"
+top_games_win_teams: "Топ игроков по количеству побед в командном режиме"
+top_kills: "Топ игроков по количеству убийств"
+top_suicides: "Топ игроков по количеству самоубийств"
+top_teams_points: "Топ игроков по очкам в командном режиме"
+search_small: "Запрос должен быть больше 3 символов"
+search_input: "Введите запрос"
+search_not_found: "По вашему запросу ничего не найдено"
+prv_admin: "админ"
+player_profiles: "Профили игрока"
+game_history: "История игр"

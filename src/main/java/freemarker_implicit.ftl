@@ -1,0 +1,6 @@
+[#ftl]
+[#-- @implicitly included --]
+[#-- @ftlvariable name="statics" type="freemarker.template.TemplateHashModel" --]
+[#-- @ftlvariable name="request" type="javax.servlet.http.HttpServletRequest" --]
+[#-- @ftlvariable name="locale" type="net.bombdash.core.site.lang.Locale" --]
+[#-- @ftlvariable name="bombDashUser" type="net.bombdash.core.site.auth.BombDashUser" --]
