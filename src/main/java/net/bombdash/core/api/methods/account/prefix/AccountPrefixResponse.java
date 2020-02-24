@@ -9,6 +9,18 @@ public class AccountPrefixResponse {
     private Response response;
 
     enum Response {
-        OK,UTF_8,FORBIDDEN_WORD
+        /**
+         * Префикс сменён
+         */
+        OK,
+        /**
+         * UTF-8 в префиксе
+         */
+        UTF_8,
+        WRONG_SPEED,
+        /**
+         * Запрещённое слово (ADMIN,MODER)
+         */
+        FORBIDDEN_WORD
     }
 }

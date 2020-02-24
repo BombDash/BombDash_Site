@@ -20,6 +20,12 @@ public class BombDashUser implements UserDetails {
     private final PlayerProfile last;
     private final Status status;
 
+    public Status getStatus() {
+        if (status == null)
+            return Status.user;
+        else
+            return status;
+    }
 
     public PlayerProfile getProfile() {
         return last;
