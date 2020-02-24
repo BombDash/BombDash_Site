@@ -9,16 +9,11 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import java.util.Collections;
 
-@SuppressWarnings("all")
 public class UserService implements UserDetailsService {
     @Autowired
     private NamedParameterJdbcTemplate template;
-    @Autowired
-    private BCryptPasswordEncoder encoder;
 
     @Override
     public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
@@ -43,7 +38,7 @@ public class UserService implements UserDetailsService {
                         "    ic.name AS 'icon',\n" +
                         "    pr.global,\n" +
                         "    `status`.name AS 'status',\n" +
-                        "    prv.expires\n" +
+                        "    prv.end\n" +
                         "FROM\n" +
                         "    account acc\n" +
                         "        JOIN\n" +
