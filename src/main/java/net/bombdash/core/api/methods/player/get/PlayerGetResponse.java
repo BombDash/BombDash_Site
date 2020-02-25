@@ -3,12 +3,12 @@ package net.bombdash.core.api.methods.player.get;
 import com.google.gson.annotations.SerializedName;
 import lombok.Builder;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import net.bombdash.core.api.models.BanInfo;
+import net.bombdash.core.api.models.Particle;
 import net.bombdash.core.api.models.PlayerProfile;
+import net.bombdash.core.api.models.Prefix;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -72,22 +72,6 @@ public class PlayerGetResponse {
      * Очки за этот месяц
      */
     private Map<String, Integer> monthScore;
-
-    @Value
-    public static class Prefix {
-        private String text;
-        private int speed;
-        private List<Double[]> animation;
-
-    }
-
-    @Value
-    public static class Particle {
-        @SerializedName("particle_type")
-        private String particleType;
-        @SerializedName("emit_type")
-        private String emitType;
-    }
 
     @Value
     public static class Clan {

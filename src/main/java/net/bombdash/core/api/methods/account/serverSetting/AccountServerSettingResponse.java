@@ -1,11 +1,11 @@
-package net.bombdash.core.api.methods.account.prefix;
+package net.bombdash.core.api.methods.account.serverSetting;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @AllArgsConstructor
 @Data
-public class AccountPrefixResponse {
+public class AccountServerSettingResponse {
     private Response response;
 
     enum Response {

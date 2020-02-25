@@ -191,4 +191,19 @@ public class Utils {
             return 0;
         }
     }
+
+    public static String rgbToHex(String rgbStr) {
+        int rgb;
+        try {
+            rgb = Integer.parseInt(rgbStr);
+        } catch (NumberFormatException ex) {
+            rgb = 0;
+        }
+        return rgbToHex(rgb);
+    }
+
+    public static String rgbToHex(int rgb) {
+
+        return "#" + Integer.toHexString(rgb).substring(2);
+    }
 }

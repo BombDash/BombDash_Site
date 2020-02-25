@@ -1,9 +1,14 @@
 package net.bombdash.core.api.methods.player.get;
 
-import lombok.Value;
+import lombok.Data;
 
-@Value
+@Data
 public class PlayerGetRequest {
+    public PlayerGetRequest(String id, PlayerGetField... fields) {
+        this.id = id;
+        this.fields = fields;
+    }
+
     /**
      * id игрока которого нужно получить
      */

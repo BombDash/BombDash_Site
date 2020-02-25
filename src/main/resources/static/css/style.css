@@ -16,8 +16,37 @@
 
 .nav-destroyer {
     display: block;
-
 }
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #f7f7f7;
+    outline: none;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
 @media all and (min-width: 1024px) {
     .card-hover:hover {
         transform: scale(1.1);
@@ -278,6 +307,10 @@ table tr:first-child td {
 .round-table {
     border-radius: 15px;
     overflow: hidden;
+}
+
+.btn {
+    white-space: normal;;
 }
 
 .textTransfer {

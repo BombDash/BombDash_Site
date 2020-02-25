@@ -3,7 +3,9 @@ package net.bombdash.core.api.methods.player.get;
 import net.bombdash.core.api.MethodExecuteException;
 import net.bombdash.core.api.methods.AbstractExecutor;
 import net.bombdash.core.api.models.BanInfo;
+import net.bombdash.core.api.models.Particle;
 import net.bombdash.core.api.models.PlayerProfile;
+import net.bombdash.core.api.models.Prefix;
 import net.bombdash.core.database.Extractors;
 import net.bombdash.core.other.Utils;
 import net.bombdash.core.site.auth.BombDashUser;
@@ -44,8 +46,8 @@ public class PlayerGet extends AbstractExecutor<PlayerGetRequest, PlayerGetRespo
             "    pref.text AS 'prefix_text', " +
             "    pref.speed as 'prefix_speed', " +
             "    IF(par.player_id IS NULL, 0, 1) AS 'particle', " +
-            "    par_type.name AS 'particle_type', " +
-            "    et.name AS 'particle_emit_type' " +
+            "    par.particle_type, " +
+            "    par.emit_type 'particle_emit_type'" +
             "FROM " +
             "    `player` p " +
             "        LEFT JOIN " +
@@ -64,10 +66,6 @@ public class PlayerGet extends AbstractExecutor<PlayerGetRequest, PlayerGetRespo
             "    `prefix` pref ON pref.player_id = p.player_id " +
             "        LEFT JOIN " +
             "    `particle` par ON par.player_id = p.player_id " +
-            "        LEFT JOIN " +
-            "    `particle_type` par_type ON par_type.id = par.particle_type " +
-            "        LEFT JOIN " +
-            "    `emit_type` et ON et.id = par.emit_type " +
             "WHERE " +
             "    p.player_id = :player";
 
@@ -243,9 +241,9 @@ public class PlayerGet extends AbstractExecutor<PlayerGetRequest, PlayerGetRespo
                     response.clan(clan);
                 }
                 if (Utils.parseBoolean(set.getInt("prefix"))) {
-                    PlayerGetResponse.Prefix prefix = new PlayerGetResponse.Prefix(
+                    Prefix prefix = new Prefix(
                             set.getString("prefix_text"),
-                            1,
+                            set.getInt("prefix_speed"),
                             getQueries().getTemplate().query(
                                     "SELECT color FROM prefix_animation where player_id = :player order by id",
                                     Utils.getMap("player", playerId),
@@ -255,7 +253,7 @@ public class PlayerGet extends AbstractExecutor<PlayerGetRequest, PlayerGetRespo
                     response.prefix(prefix);
                 }
                 if (Utils.parseBoolean(set.getInt("particle"))) {
-                    PlayerGetResponse.Particle particle = new PlayerGetResponse.Particle(
+                    Particle particle = new Particle(
                             set.getString("particle_type"),
                             set.getString("particle_emit_type")
                     );
@@ -269,16 +267,15 @@ public class PlayerGet extends AbstractExecutor<PlayerGetRequest, PlayerGetRespo
         }
     }
 
-    private class PrefixExtractor implements ResultSetExtractor<List<Double[]>> {
+    private class PrefixExtractor implements ResultSetExtractor<List<Integer>> {
 
         @Override
-        public List<Double[]> extractData(ResultSet resultSet) throws DataAccessException, SQLException {
-            List<Double[]> list = new ArrayList<>(resultSet.getFetchSize());
+        public List<Integer> extractData(ResultSet resultSet) throws DataAccessException, SQLException {
+            List<Integer> list = new ArrayList<>(resultSet.getFetchSize());
             while (resultSet.next()) {
                 int colorInt = resultSet.getInt("color");
-                Double[] colors = Utils.rgbToColor(colorInt);
 
-                list.add(colors);
+                list.add(colorInt);
             }
             return list;
         }
