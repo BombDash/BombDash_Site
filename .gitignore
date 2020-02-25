@@ -5,6 +5,7 @@ locale/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
+logfile.*
 
 ### STS ###
 .apt_generated
