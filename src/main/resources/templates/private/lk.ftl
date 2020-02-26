@@ -81,19 +81,19 @@
                                         <#assign  particleTypes = [
                                         {
                                         "type":"spark",
-                                        "name":"Огонь"
+                                        "name":"Искры"
                                         },
                                         {
                                         "type":"splinter",
-                                        "name":"Осколок"
+                                        "name":"Щепки"
                                         },
                                         {
                                         "type":"sweat",
-                                        "name":"Пар"
+                                        "name":"Огонь"
                                         },
                                         {
                                         "type":"rock",
-                                        "name":"Камень"
+                                        "name":"Камни"
                                         },
                                         {
                                         "type":"slime",
@@ -101,7 +101,7 @@
                                         },
                                         {
                                         "type":"metal",
-                                        "name":"Метал"
+                                        "name":"Металл"
                                         },
                                         {
                                         "type":"ice",
