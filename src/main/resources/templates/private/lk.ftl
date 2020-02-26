@@ -175,11 +175,7 @@
             $(this).tab('show');
         });
 
-        let i = <#if prefixIsset>
-                ${info.getPrefix().getAnimation()?size?c}
-                <#else>
-                1
-            </#if>;
+        let i = <#if prefixIsset>${info.getPrefix().getAnimation()?size?c}<#else>1</#if>;
 
         function recheckColors() {
             let children = $("#color_append").children();
