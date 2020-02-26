@@ -45,7 +45,7 @@
                                         <#list info.getPrefix().getAnimation() as color>
                                             <#assign k = k+1>
                                             <div <#if k==1>id="main_color"</#if> class="input-group mb-3">
-                                                <input type="color" class="form-control" name="color1"
+                                                <input type="color" class="form-control" name="color${k}"
                                                        value="${Utils.rgbToHex(color)}">
                                                 <div class="input-group-append">
                                                     <button type="button" <#if k==1>disabled</#if>
@@ -175,7 +175,11 @@
             $(this).tab('show');
         });
 
-        let i = 1;
+        let i = <#if prefixIsset>
+                ${info.getPrefix().getAnimation().size()?c}
+                <#else>
+                1
+            </#if>;
 
         function recheckColors() {
             let children = $("#color_append").children();
