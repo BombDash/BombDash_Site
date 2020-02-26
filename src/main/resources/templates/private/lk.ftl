@@ -176,7 +176,7 @@
         });
 
         let i = <#if prefixIsset>
-                ${info.getPrefix().getAnimation().size()?c}
+                ${info.getPrefix().getAnimation()?size?c}
                 <#else>
                 1
             </#if>;
