@@ -7,7 +7,10 @@ import net.bombdash.core.site.auth.BombDashUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,6 +27,7 @@ public class FormController {
     private Set<AbstractForm> forms;
     @Autowired
     private Gson gson;
+
     @RequestMapping(
             value = "/{form}",
             method = {RequestMethod.GET, RequestMethod.POST}
@@ -36,7 +40,7 @@ public class FormController {
     ) throws IOException {
         AbstractForm formObj = forms
                 .stream()
-                .filter(f -> f.getFormName().equals(form))
+                .filter(f -> f.getFormName().equalsIgnoreCase(form))
                 .findFirst()
                 .orElse(null);
         if (formObj != null) {
@@ -44,7 +48,8 @@ public class FormController {
                 formObj.preExecute(request, response, user);
             } catch (MethodExecuteException e) {
                 response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-                response.getWriter().write(new FailedJson(e.getError()).toString());
+
+                response.getWriter().write(gson.toJson(new FailedJson(e.getError())));
             }
         } else
             response.getWriter().write("SUKA_BLYAT");

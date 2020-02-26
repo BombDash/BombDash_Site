@@ -129,6 +129,9 @@
                     var data = form.serialize(); // пoдгoтaвливaeм дaнныe
                     $.ajax({ // инициaлизируeм ajax зaпрoс
                         type: 'POST', // oтпрaвляeм в POST фoрмaтe, мoжнo GET
+                        xhrFields: {
+                            withCredentials: true
+                        },
                         url: String(form.attr('action')), // путь дo oбрaбoтчикa
                         dataType: 'json', // oтвeт ждeм в json фoрмaтe
                         data: data, // дaнныe для oтпрaвки

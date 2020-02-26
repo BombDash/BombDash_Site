@@ -94,3 +94,8 @@ search_not_found: "По вашему запросу ничего не найде
 prv_admin: "админ"
 player_profiles: "Профили игрока"
 game_history: "История игр"
+personal_area: "Личный кабинет"
+server_setting_ok: "Серверные настройки успешно сохранены"
+server_setting_utf: "Префикс может состоять только из ASCII таблицы, то есть англиские буквы и некоторые знаки"
+server_setting_wrong_speed: "Ты как из палаты выбрался и сделал скорость больше или меньше лимитов ?"
+server_setting_forbidden_word: "Слова admin moderator и owner использовать запрещено (и обходов это тоже касается)"

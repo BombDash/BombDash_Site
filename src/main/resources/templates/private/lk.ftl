@@ -14,7 +14,7 @@
         <div class="p-3 col-lg rounded bg-secondary">
             <div class="tab-content">
                 <div id="server" class="tab-pane fade active show">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" method="post" action="/form/account_serverSetting">
                         <h3>Настройка префикса</h3>
                         <#assign prefixIsset = info?? && info.getPrefix()?? && info.getPrefix().getText()??>
                         <div class="col-lg-4 pt-3 mb-3 round-table" style="background: rgba(0, 0, 0, 0.2);">
@@ -78,25 +78,76 @@
                                 <label class="control-label" for="particle_type">Тип партиклов</label>
                                 <div>
                                     <select id="particle_type" name="particle_type" class="form-control">
-                                        <option value="spark">Огонь</option>
-                                        <option value="splinter">Осколок</option>
-                                        <option value="sweat">Пар</option>
-                                        <option value="rock">Камень</option>
-                                        <option value="slime">Слизь</option>
-                                        <option value="metal">Метал</option>
-                                        <option value="ice">Лёд</option>
+                                        <#assign  particleTypes = [
+                                        {
+                                        "type":"spark",
+                                        "name":"Огонь"
+                                        },
+                                        {
+                                        "type":"splinter",
+                                        "name":"Осколок"
+                                        },
+                                        {
+                                        "type":"sweat",
+                                        "name":"Пар"
+                                        },
+                                        {
+                                        "type":"rock",
+                                        "name":"Камень"
+                                        },
+                                        {
+                                        "type":"slime",
+                                        "name":"Слизь"
+                                        },
+                                        {
+                                        "type":"metal",
+                                        "name":"Метал"
+                                        },
+                                        {
+                                        "type":"ice",
+                                        "name":"Лёд"
+                                        }
+                                        ]>
+                                        <#assign activeType = info.getParticle()???then(info.getParticle().getParticleType(),"spark")>
+                                        <#list particleTypes as type>
+
+                                            <option <#if type['type']==activeType>selected</#if>
+                                                    value="${type['type']}">${type['name']}</option>
+                                        </#list>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="particle">Тип партиклов</label>
                                 <div>
+                                    <#assign emitTypes = [
+                                    {
+                                    "value":"off",
+                                    "name":"Отключить частицы"
+                                    },
+                                    {
+                                    "value":"body",
+                                    "name":"Из тела"
+                                    },
+                                    {
+                                    "value":"legs",
+                                    "name":"В ногах"
+                                    },
+                                    {
+                                    "value":"around",
+                                    "name":"Вокруг персонажа"
+                                    },
+                                    {
+                                    "value":"underfoot",
+                                    "name":"Под ногами"
+                                    }
+                                    ]>
                                     <select id="particle" name="emit_type" class="form-control">
-                                        <option value="0">Отключить частицы</option>
-                                        <option value="1">Из тела</option>
-                                        <option value="2">В ногах</option>
-                                        <option value="3">Вокруг персонажа</option>
-                                        <option value="4">Под ногами</option>
+                                        <#assign activeEmit = info.getParticle()???then(info.getParticle().getEmitType(),"body")>
+                                        <#list emitTypes as type>
+                                            <option <#if type['value']==activeEmit>selected</#if>
+                                                    value="${type['value']}">${type['name']}</option>
+                                        </#list>
                                     </select>
                                 </div>
                             </div>
@@ -115,7 +166,7 @@
         </div>
     </div>
 </@page.page>
-
+<@page.jsPost />
 <script>
 
     $(document).ready(function () {
@@ -140,7 +191,9 @@
             $(this).parent().parent().remove();
             recheckColors();
         };
-        $(".delete_button").click(deleteFunc());
+        $(".delete_button").click(
+            deleteFunc
+        );
         $("#add_color").click(function () {
             i++;
             let colorAppend = $("#color_append");

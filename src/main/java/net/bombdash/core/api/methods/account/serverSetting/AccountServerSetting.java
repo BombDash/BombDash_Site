@@ -32,7 +32,7 @@ public class AccountServerSetting extends AbstractExecutor<AccountServerSettingR
         if (user == null)
             throw new MethodExecuteException(MethodExecuteExceptionCode.AUTHORIZE_REQUIRED, "Can't execute without user");
         MapSqlParameterSource source = new MapSqlParameterSource();
-        source.addValue("id", user.getUsername());
+        source.addValue("id", user.getId());
         Integer count = template.query("SELECT COUNT(*) FROM privilege WHERE player_id = :id", source, Extractors.firstIntExtractor);
         if (count == null)
             throw new MethodExecuteException(MethodExecuteExceptionCode.UNKNOWN_ERROR, "Count is null, but why?/");
