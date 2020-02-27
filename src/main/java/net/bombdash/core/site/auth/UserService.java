@@ -19,9 +19,10 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
         if (mail.equals("system")) {
             return new BombDashUser(
+                    template,
                     "null",
                     "null",
-                   "$2a$04$AYaJRPp3uQ4PZ.Pj95Z/J.eCnpwKJ0v1eWm5aKPqcy4kEzFHGK932",
+                    "$2a$04$AYaJRPp3uQ4PZ.Pj95Z/J.eCnpwKJ0v1eWm5aKPqcy4kEzFHGK932",
                     new PlayerProfile(),
                     Status.admin
             );
@@ -78,6 +79,7 @@ public class UserService implements UserDetailsService {
             builder.status(status);
             PlayerProfile profile = Extractors.extractProfile(set);
             builder.last(profile);
+            builder.template(template);
             return builder.build();
         } else
             throw new UsernameNotFoundException("User not found");

@@ -16,6 +16,13 @@ import java.util.Map;
 @Builder
 @Value
 public class PlayerGetResponse {
+    public String getStatus() {
+        if (status == null)
+            return "user";
+        else
+            return status;
+    }
+
     /**
      * Если нет привилегии то NULL
      */

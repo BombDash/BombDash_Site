@@ -6,6 +6,7 @@ import net.bombdash.core.site.auth.handlers.Fail;
 import net.bombdash.core.site.auth.handlers.Success;
 import net.bombdash.core.site.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -54,6 +55,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private Utils utils;
     @Autowired
     private Gson gson;
+    @Value("${bombdash.http}")
+    private int httpPort;
+    @Value("${bombdash.https}")
+    private int httpsPort;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -61,8 +66,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         if (Arrays.stream(environment.getActiveProfiles()).noneMatch("dev"::equals)) {
             http
                     .portMapper()
-                    .http(80) // http port defined in yml config file
-                    .mapsTo(443);// https port defined in yml config file
+                    .http(httpPort) // http port defined in yml config file
+                    .mapsTo(httpsPort);// https port defined in yml config file
 
             http
                     .requiresChannel()

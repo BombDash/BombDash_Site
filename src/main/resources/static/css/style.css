@@ -99,7 +99,7 @@ table tr:first-child td {
     outline: 0
 }
 
-@media (max-width: 576px) {
+@media (max-width: 991px) {
     .section2, .table-i-div {
         align-items: center;
         flex-direction: column
@@ -322,7 +322,7 @@ table tr:first-child td {
     display: -webkit-box
 }
 
-@media (max-width: 576px) {
+@media (max-width: 991px) {
     .section2, .table-i-div {
         align-items: center;
         flex-direction: column
@@ -502,7 +502,7 @@ table tr:first-child td {
     align-items: flex
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 991px) {
     .textTransfer {
         flex-direction: column;
         justify-content: center;

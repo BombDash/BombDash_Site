@@ -118,7 +118,10 @@
     </body>
 </html>
 </#macro>
-<#macro     jsPost>
+<#macro balance ammount>
+    Ваш баланс: ${ammount} (картинка билета)
+</#macro>
+<#macro jsPost>
     <script>
         $(document).ready(function () { // вся мaгия пoслe зaгрузки стрaницы
             $('form').submit(function () { // пeрeхвaтывaeм всe при сoбытии oтпрaвки

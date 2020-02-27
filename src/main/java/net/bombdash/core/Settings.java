@@ -7,6 +7,7 @@ import net.bombdash.core.api.json.IntegerReplacerDeserializer;
 import net.bombdash.core.api.json.MethodExecuteExceptionSerializer;
 import net.bombdash.core.api.methods.stats.update.PlayerProfileDeserializer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.boot.web.server.Ssl;
@@ -37,13 +38,16 @@ public class Settings {
     @Autowired
     private Environment environment;
 
+    @Value("${bombdash.https}")
+    private int httpsPort;
+
     @Bean
     public ServerProperties serverProperties() {
         ServerProperties properties = new ServerProperties();
         if (Arrays.asList(environment.getActiveProfiles()).contains("dev"))
             properties.setPort(80);
         else {
-            properties.setPort(443);
+            properties.setPort(httpsPort);
             Ssl ssl = new Ssl();
             ssl.setEnabled(true);
             ssl.setKeyStoreType("PKCS12");
