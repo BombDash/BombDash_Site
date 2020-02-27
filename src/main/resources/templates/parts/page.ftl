@@ -26,7 +26,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
             <div class="container">
                 <a class="navbar-brand" href="/"><img
-                            src="https://bombdash.net/image/logo.png"
+                            src="/image/logo.png"
                             width="32" height="32" alt="logo"/>BombDash</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
