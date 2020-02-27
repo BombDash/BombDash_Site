@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
-import org.springframework.boot.web.server.Ssl;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,8 +37,8 @@ public class Settings {
     @Autowired
     private Environment environment;
 
-    @Value("${bombdash.https}")
-    private int httpsPort;
+    @Value("${bombdash.http}")
+    private int httpPort;
 
     @Bean
     public ServerProperties serverProperties() {
@@ -47,15 +46,7 @@ public class Settings {
         if (Arrays.asList(environment.getActiveProfiles()).contains("dev"))
             properties.setPort(80);
         else {
-            properties.setPort(httpsPort);
-            Ssl ssl = new Ssl();
-            ssl.setEnabled(true);
-            ssl.setKeyStoreType("PKCS12");
-            ssl.setKeyStorePassword("1234567");
-            ssl.setKeyPassword("1234567");
-            ssl.setKeyAlias("tomcat");
-            ssl.setKeyStore("/etc/letsencrypt/live/bombdash.net/keystore.p12");
-            properties.setSsl(ssl);
+            properties.setPort(httpPort);
         }
         return properties;
     }
