@@ -13,7 +13,6 @@ public class StatsTypes extends AbstractExecutor<Object, List<String>> {
     public List<String> execute(Object json, BombDashUser user) {
         return getQueries().getTemplate().getJdbcTemplate().query("SELECT name from score_type", set -> {
             List<String> types = new ArrayList<>();
-            types.add("all");
             while (set.next()) {
                 types.add(set.getString(1));
             }
