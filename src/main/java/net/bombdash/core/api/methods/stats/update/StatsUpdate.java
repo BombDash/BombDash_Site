@@ -1,10 +1,9 @@
 package net.bombdash.core.api.methods.stats.update;
 
 import net.bombdash.core.api.MethodExecuteException;
+import net.bombdash.core.api.MethodExecuteExceptionCode;
 import net.bombdash.core.api.annotations.ProtectedMethod;
 import net.bombdash.core.api.methods.AbstractExecutor;
-import net.bombdash.core.api.methods.stats.ping.StatsPing;
-import net.bombdash.core.api.methods.stats.ping.StatsPingRequest;
 import net.bombdash.core.database.Extractors;
 import net.bombdash.core.other.Utils;
 import net.bombdash.core.site.auth.BombDashUser;
@@ -29,13 +28,14 @@ public class StatsUpdate extends AbstractExecutor<StatsUpdateRequest, Object> {
     @Override
     public Object execute(StatsUpdateRequest request, BombDashUser user) throws MethodExecuteException {
         if (request.getPlayers() == null)
-            throw new MethodExecuteException(3, "Players array can't be null");
+            throw new MethodExecuteException(MethodExecuteExceptionCode.FIELD_MISSING, "Players array can't be null");
         List<String> processedPlayers = new ArrayList<>();
         for (StatsUpdateRequest.PlayerTop player : request.getPlayers()) {
             if (processedPlayers.contains(player.getId()))
                 continue;
             getQueries().addPlayerIfNotExists(player.getId());
             player.getScores().forEach((name, value) -> addScore(player.getId(), name, value));
+            addAllScores(player);
             updateProfiles(player.getId(), player.getProfiles(), player.getLastProfile(), player.getDevice());
             processedPlayers.add(player.getId());
         }
@@ -45,6 +45,15 @@ public class StatsUpdate extends AbstractExecutor<StatsUpdateRequest, Object> {
                 processedPlayers
         );
         return new Object();
+    }
+
+    private void addAllScores(StatsUpdateRequest.PlayerTop player) {
+        Map<String, Integer> s = player.getScores();
+        int all =
+                s.getOrDefault("ffa_points", 0) +
+                        s.getOrDefault("kills", 0) +
+                        (4 * (s.getOrDefault("teams_points", 0)));
+        addScore(player.getId(), "all", all);
     }
 
 
@@ -115,14 +124,12 @@ public class StatsUpdate extends AbstractExecutor<StatsUpdateRequest, Object> {
                 if (profile.isGlobal())
                     map.put("icon", iconId);
                 else
-                    map.put("icon",getIconId("logo"));
+                    map.put("icon", getIconId("logo"));
                 map.put("global", profile.isGlobal() ? 1 : 0);
             }
             map.put("char_id", charId);
             map.put("color", Utils.colorToRgb(profile.getColor()));
             map.put("highlight", Utils.colorToRgb(profile.getHighlight()));
-
-
 
 
             GeneratedKeyHolder key = new GeneratedKeyHolder();
