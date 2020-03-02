@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class PlayerCheckRequest {
-    public PlayerCheckRequest(int... players) {
+    private String[] players;
+
+    public PlayerCheckRequest(String... players) {
         this.players = players;
     }
-
-    private int[] players;
 }

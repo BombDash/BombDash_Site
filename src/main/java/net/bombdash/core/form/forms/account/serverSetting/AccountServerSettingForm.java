@@ -76,7 +76,7 @@ public class AccountServerSettingForm extends AbstractForm {
                 returnError(locale.__("server_setting_forbidden_word").toString(), response);
                 break;
             case LENGTH:
-                returnError(locale.__("server_setting_lenght").toString(), response);
+                returnError(locale.__("server_setting_length").toString(), response);
             default:
                 returnError("Неизвестный ответ сервера", response);
                 break;

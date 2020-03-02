@@ -2,6 +2,8 @@ package net.bombdash.core.api.methods.player.get;
 
 import net.bombdash.core.api.MethodExecuteException;
 import net.bombdash.core.api.methods.AbstractExecutor;
+import net.bombdash.core.api.methods.player.check.PlayerCheck;
+import net.bombdash.core.api.methods.player.check.PlayerCheckRequest;
 import net.bombdash.core.api.models.BanInfo;
 import net.bombdash.core.api.models.Particle;
 import net.bombdash.core.api.models.PlayerProfile;
@@ -9,6 +11,7 @@ import net.bombdash.core.api.models.Prefix;
 import net.bombdash.core.database.Extractors;
 import net.bombdash.core.other.Utils;
 import net.bombdash.core.site.auth.BombDashUser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -28,6 +31,8 @@ import java.util.Map;
 public class PlayerGet extends AbstractExecutor<PlayerGetRequest, PlayerGetResponse> {
     private PlayerGetQuery extractor = new PlayerGetQuery();
     private PrefixExtractor prefixExtractor = new PrefixExtractor();
+    @Autowired
+    private PlayerCheck check;
     private ScoreExtractor scoreExtractor = new ScoreExtractor();
     private final String basicSql = "SELECT  " +
             "    p.player_id, " +
@@ -75,6 +80,7 @@ public class PlayerGet extends AbstractExecutor<PlayerGetRequest, PlayerGetRespo
         if (request.getId() == null)
             throw new MethodExecuteException(3, "Id can't be null");
         Map<String, Object> playerMap = Utils.getMap("player", request.getId());
+        check.execute(new PlayerCheckRequest(request.getId()));
         PlayerGetResponse.PlayerGetResponseBuilder response = template.query(basicSql, playerMap, extractor);
         if (response != null) {
             if (request.getFields() != null) {

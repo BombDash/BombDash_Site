@@ -1,6 +1,7 @@
 package net.bombdash.core.api.methods.player.check;
 
 import net.bombdash.core.api.MethodExecuteException;
+import net.bombdash.core.api.MethodExecuteExceptionCode;
 import net.bombdash.core.api.methods.AbstractExecutor;
 import net.bombdash.core.site.auth.BombDashUser;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -11,9 +12,9 @@ import org.springframework.stereotype.Component;
 public class PlayerCheck extends AbstractExecutor<PlayerCheckRequest, Object> {
     @Override
     public Object execute(PlayerCheckRequest json, BombDashUser user) throws MethodExecuteException {
-        int[] players = json.getPlayers();
+        String[] players = json.getPlayers();
         if (players == null || players.length == 0)
-            throw new MethodExecuteException(3, "Array is empty");
+            throw new MethodExecuteException(MethodExecuteExceptionCode.FIELD_MISSING, "Array is empty");
         NamedParameterJdbcTemplate template = getQueries().getTemplate();
         MapSqlParameterSource source = new MapSqlParameterSource("players", players);
         template
