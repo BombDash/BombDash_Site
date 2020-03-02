@@ -14,13 +14,16 @@ public class AccountServerSettingResponse {
         */
        OK,
        /**
-        * UTF-8 в префиксе
+        * Быстрая/Медленная скорость
         */
-       UTF_8,
        WRONG_SPEED,
        /**
-         * Запрещённое слово (ADMIN,MODER)
-         */
-        FORBIDDEN_WORD
-    }
+        * Большая длинна
+        */
+       LENGTH,
+       /**
+        * Запрещённое слово (ADMIN,MODER)
+        */
+       FORBIDDEN_WORD
+   }
 }
