@@ -69,15 +69,14 @@ public class AccountServerSettingForm extends AbstractForm {
             case OK:
                 returnSuccess(locale.__("server_setting_ok").toString(), response);
                 break;
-            case UTF_8:
-                returnError(locale.__("server_setting_utf").toString(), response);
-                break;
             case WRONG_SPEED:
                 returnError(locale.__("server_setting_wrong_speed").toString(), response);
                 break;
             case FORBIDDEN_WORD:
                 returnError(locale.__("server_setting_forbidden_word").toString(), response);
                 break;
+            case LENGTH:
+                returnError(locale.__("server_setting_lenght").toString(), response);
             default:
                 returnError("Неизвестный ответ сервера", response);
                 break;

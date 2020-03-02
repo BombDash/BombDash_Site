@@ -12,8 +12,6 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import java.nio.charset.CharsetEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -23,7 +21,6 @@ import static net.bombdash.core.api.methods.account.serverSetting.AccountServerS
 
 @Component
 public class AccountServerSetting extends AbstractExecutor<AccountServerSettingRequest, AccountServerSettingResponse> {
-    private CharsetEncoder encoder = StandardCharsets.US_ASCII.newEncoder();
     private Set<Status> disableCheck = Stream.of(Status.admin, Status.moderator).collect(Collectors.toSet());
 
     @Override
@@ -45,8 +42,8 @@ public class AccountServerSetting extends AbstractExecutor<AccountServerSettingR
             int speed = prefix.getSpeed();
             String text = prefix.getText();
             if (!disableCheck.contains(user.getStatus())) {
-                if (!encoder.canEncode(prefix.getText())) {
-                    return new AccountServerSettingResponse(Response.UTF_8);
+                if (prefix.getText().length() > 20) {
+                    return new AccountServerSettingResponse(Response.LENGTH);
                 }
                 if (Stream.of("admin", "moderator", "owner").anyMatch(s -> s.equalsIgnoreCase(text))) {
                     return new AccountServerSettingResponse(Response.FORBIDDEN_WORD);
