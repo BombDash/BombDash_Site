@@ -27,13 +27,22 @@ public class PlayerCheck extends AbstractExecutor<PlayerCheckRequest, Object> {
             throw new MethodExecuteException(MethodExecuteExceptionCode.FIELD_MISSING, "Array is empty");
         NamedParameterJdbcTemplate template = getQueries().getTemplate();
         MapSqlParameterSource source = new MapSqlParameterSource("players", players);
-        template
-                .update(
-                        "DELETE FROM banlist  " +
-                                "WHERE player_id in (:players) AND " +
-                                "end IS NOT NULL AND " +
-                                "end <= CURRENT_TIMESTAMP",
-                        source);
+        int count = template.update(
+                "INSERT INTO " +
+                        "banlist_history (player_id, reason, banner, end) " +
+                        "SELECT player_id, reason, banner, end from banlist " +
+                        "WHERE player_id in (:players) AND " +
+                        "end IS NOT NULL AND " +
+                        "end <= CURRENT_TIMESTAMP",
+                source);
+        if (count > 0)
+            template
+                    .update(
+                            "DELETE FROM banlist  " +
+                                    "WHERE player_id in (:players) AND " +
+                                    "end IS NOT NULL AND " +
+                                    "end <= CURRENT_TIMESTAMP",
+                            source);
         template
                 .update(
                         "DELETE FROM privilege " +
